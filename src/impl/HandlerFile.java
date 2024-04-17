@@ -10,7 +10,6 @@ public class HandlerFile {
     public HandlerFile(String fileName){
         ReadFile(fileName);
         getSplitElements();
-        getLongestWord();
     }
 
     private void ReadFile(String fileName){
@@ -44,11 +43,11 @@ public class HandlerFile {
     public void getWordsNumber(){
         System.out.println(foodMap.values().stream().mapToInt(Integer::intValue).sum());
     }
-    public void getLongestWord(){
+    public ArrayList<String> getLongestWord(){
         List<String> products = foodMap.keySet().stream().toList();
 
         ArrayList<String> longestWord = new ArrayList<>();
-        longestWord.add(products.getFirst());
+        longestWord.add(" ");
 
         for(String name: products){
             if (name.length() > longestWord.getFirst().length()){
@@ -58,20 +57,17 @@ public class HandlerFile {
                 longestWord.add(name);
             }
         }
-        System.out.println(longestWord);
+        return longestWord;
     }
 
     public String getMostNumerousProduct(){
         List<String> products = foodMap.keySet().stream().toList();
         return null;
     }
-    public void getWordFrequency(){
-
+    public String getWordFrequency(){
+        System.out.println("\nВведите продукт");
+        String product = new Scanner(System.in).next();
+        return String.format("\nЧастота %s в файле: %s",product, foodMap.get(product));
     }
-    private void sortDataInFile(){
-
-    }
-
-
 }
 
